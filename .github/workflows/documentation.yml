@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: Run Documentation Script
 on:
 #  push:
 #    branches: [ main ]
