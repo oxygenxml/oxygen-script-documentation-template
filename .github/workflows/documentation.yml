@@ -1,0 +1,35 @@
+name: Generate Documentation
+on:
+#  push:
+#    branches: [ main ]
+#     paths:
+#       # Automatically run the script when changes are pushed to "schemas" directory.
+#       - schemas/**
+  workflow_dispatch:
+    inputs:
+      schemaFile:
+        description: 'Schema file to generate documentation for.'
+        required: true
+jobs:
+  generate-doc:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout the repo.
+          uses: actions/checkout@v3.3.0
+
+        - name: Setup Gradle
+          uses: gradle/gradle-build-action@v2
+
+        - name: Make gradlew executable
+          run: chmod +x ./build/gradlew
+
+        - name: Build with Gradle
+          env:
+           SCRIPTING_LICENSE_KEY: ${{secrets.SCRIPTING_LICENSE_KEY}}
+          run: |
+            cd build; ./gradlew generateDoc -PschemaFile=${{inputs.schemaFile}} -PinnerBuild=true --info --stacktrace --build-cache
+       
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@v4.4.1
+          with:
+            folder: doc
