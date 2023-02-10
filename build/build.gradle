@@ -53,18 +53,6 @@ task generateDoc(type: Exec, dependsOn: [initScript]) {
         if (execResult.getExitValue() != 0) {
             println new File(outputFile).text
             throw new TaskExecutionException(it, new Exception("Generation failed, see task output for details."))
-        } else {
-                // Replace file locations from GitHub VM with locations from repository.
-                ant.replace(
-                        file: outputFile,
-                        token: 'file:/home/runner/work/oxygen-script-documentation-template/oxygen-script-documentation-template',
-                        value:  repoMainBranchUrl
-                )
-                ant.replace(
-                        file: outputFile,
-                        token: '/home/runner/work',
-                        value:  ''
-                )
         }
     }
 }
