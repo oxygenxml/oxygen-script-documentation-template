@@ -6,7 +6,6 @@ To get things ready, follow these steps:
 1. Create a new GitHub project using this template. This allows you to easily create a new repository without copying and pasting the content, and with no history or reference to this repository.
    All you have to do is click the <kbd>Use this template</kbd> button. Make sure to check <i>Include all branches</i> option.
 2. Get an Oxygen Scripting license key from https://www.oxygenxml.com/xml_scripting/pricing.html (you can also request a [trial](https://www.oxygenxml.com/xml_scripting/register.html)). Add it as a secret to your repository (Settings &#8594; Secrets and variables &#8594; Actions &#8594; New repository secret), and name it "SCRIPTING_LICENSE_KEY".
-3. Open <i>build/gradle.properties</i> file and replace "oxygenxml" with your GitHub {userid}.
 
 Now, as the setup should be ready, you can add the schema files that you want to document to the <i>schemas</i> directory.
 Feel free to use or remove the sample files provided with this template. To run the documentation script, follow these steps:
