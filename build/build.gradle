@@ -27,6 +27,14 @@ task initScript() {
         case ".wsdl":
             scriptToRun = "wsdlDocumentation.sh"
             break
+        case ".json":
+        case ".jschema":
+            scriptToRun = "jsonSchemaDocGen.sh"
+            break
+        case ".yaml":
+        case ".yml":
+            scriptToRun = "openApiDocGen.sh"
+            break
         default:
             break
     }
