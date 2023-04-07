@@ -17,7 +17,7 @@ Feel free to use or remove the sample files provided with this template. To run 
 
 📝 The generated documentation files will be deployed to <i>gh-pages</i> branch. Make sure the workflow has read/write permissions (Settings &#8594; Actions &#8594; General &#8594; Workflow permissions). Otherwise, you may not be able to deploy your documentation.
 
-👀 If you already have your schema files on a repository, you may want to check [Oxygen Documentation action](https://github.com/marketplace/actions/oxygen-documentation-action) and include it in your workflow.
+👀 If you already have your schema files on a repository, you may want to check [Oxygen Documentation action](https://github.com/marketplace/actions/oxygen-script-documentation-action) and include it in your workflow.
 
 The main documentation file generated using Oxygen Scripting should be available here:
 https://{userid}.github.io/{reponame}/{schemaName}.html
