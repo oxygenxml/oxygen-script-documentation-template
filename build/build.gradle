@@ -47,7 +47,7 @@ task initScript() {
     }
 }
 
-task downloadAddons() {
+task downloadAddons(dependsOn: [initScript]) {
     doFirst {
         if (new File("${projectDir}/extracted/oxygen/").exists()) {
             println "The download started for " + scriptToRun
