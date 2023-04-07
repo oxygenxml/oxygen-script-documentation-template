@@ -47,9 +47,10 @@ task initScript() {
     }
 }
 
-task downloadAddons(dependsOn: [initScript]) {
+task downloadAddons() {
     doFirst {
         if (new File("${projectDir}/extracted/oxygen/").exists()) {
+            println "The download started for " + scriptToRun
             if ("openApiDocGen.sh".equals(scriptToRun)) {
                 ant.get(src: 'https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-openapi-doc-generator-addon/2.1.0/oxygen-openapi-doc-generator-addon-2.1.0-plugin.jar',
                         dest: "${projectDir}/extracted/oxygen/plugins", skipexisting: 'true')
@@ -65,7 +66,7 @@ task downloadAddons(dependsOn: [initScript]) {
     }
 }
 
-task generateDoc(type: Exec, dependsOn: [initScript]) {
+task generateDoc(type: Exec, dependsOn: [initScript, downloadAddons]) {
     // Compute the absolute schema file path depending on where the script is started from.
     String schemaFilePath = "${projectDir}" + (innerBuild.toBoolean() ? "/../schemas/" : "/../../") + schemaFile
     String schemaName = schemaFile.lastIndexOf('/') != -1 ?
