@@ -80,7 +80,7 @@ task generateDoc(type: Exec, dependsOn: [initScript, downloadAddons]) {
 
     workingDir "${projectDir}/extracted/oxygen"
     boolean isOpenApiOrJsonSchema = "jsonSchemaDocGen.sh".equals(scriptToRun) || "openApiDocGen.sh".equals(scriptToRun)
-    commandLine "scripts/" + scriptToRun, schemaFilePath, isOpenApiOrJsonSchema ? "-ofp " : "-out:" + outputFile
+    commandLine "scripts/" + scriptToRun, schemaFilePath, (isOpenApiOrJsonSchema ? "-ofp " : "-out:") + outputFile
     doLast {
         if (execResult.getExitValue() != 0) {
             println new File(outputFile).text
