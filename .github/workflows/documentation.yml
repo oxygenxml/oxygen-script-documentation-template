@@ -13,6 +13,8 @@ on:
       isOpenAPI:
         description: 'Check this to generate documentation for an OpenAPI file.'
         default: false
+        type: boolean
+        required: false
 jobs:
   generate-doc:
     runs-on: ubuntu-latest
