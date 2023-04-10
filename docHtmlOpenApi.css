@@ -1,0 +1,687 @@
+/*----------------------------------------
+    Global 
+-----------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+/*----------------------------------------
+    Specific layout elements 
+-----------------------------------------*/
+body[id = "oneFile"]{
+    font-size: 12px;
+    display:flex;
+    font-family: 'Roboto', sans-serif;
+    margin: initial;
+}
+
+body[id = "components"]{
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    margin: 1em;
+}
+
+body[id = "sideBarComponents"] {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    width: fit-content;
+    margin: 1em;
+}
+
+body[id ="location"]{
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+}
+
+@media print {
+    body,
+    table {
+        font-size: 10px;
+    }
+}
+
+.toc[id = "oneFileToc"]{
+  margin-right:20px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  opacity: 1;
+  float:left;
+  width: 180px;
+}
+
+
+.toc[id ="componentsToc"]{
+  margin-right:20px;
+  opacity: 1;
+}
+
+.main-area{
+  float:left;
+  margin-top:40px;
+  width: 100%;
+}
+
+/*----------------------------------------
+    Information Component 
+-----------------------------------------*/
+
+.versionApi{
+  /* Layout Properties */
+  top: 160px;
+  left: 174px;
+  width: 101px;
+  height: 25px;
+  /* UI Properties */
+  text-align: left;
+  letter-spacing: 0px;
+  color: #4A4A4A;
+  opacity: 1;
+  font-size:14px;
+  padding-left: 0.5em;
+}
+
+.openapiTitle[id ="oneFileTitle"]{
+	/* Layout Properties */
+  top: 64px;
+  left: 159px;
+  height: 33px;
+  /* UI Properties */
+  text-align: left;
+  letter-spacing: 0px;
+  color: #444444;
+  opacity: 1;
+  font-size:30px;
+  line-height: 10px;
+}
+
+
+.openapiTitle[id = "componentsTitle"]{
+	/* Layout Properties */
+  top: 64px;
+  left: 159px;
+  height: 33px;
+  /* UI Properties */
+  text-align: left;
+  letter-spacing: 0px;
+  color: #444444;
+  opacity: 1;
+  font-size:30px;
+}
+
+/* Title for each component */
+.TopicTitleGroup{
+  /* Layout Properties */
+  top: 160px;
+  left: 158px;
+  width: 117px;
+  height: 25px;
+  /* UI Properties */
+  opacity: 1;
+  display:inline-block;
+}
+
+.TopicTitle{
+  /* UI Properties */
+  text-align: left;
+  letter-spacing: 0px;
+  color: #4A4A4A;
+  opacity: 1;
+  padding-left:5px;
+  font-weight:bold;
+  font-size:24px;
+  display:inline-block;
+}
+
+.description{
+  letter-spacing: 0px;
+  opacity: 1;
+  font-size:13px;
+  line-height:1.8;
+  width:75%;
+  overflow-wrap: break-word;
+  padding-left:2em;
+}
+
+.jsonSchemaDialect{
+  letter-spacing: 0px;
+  opacity: 1;
+  font-size:13px;
+  line-height:1.8;
+  padding-left:2em;
+  padding-top: 2em;
+}
+
+.rectangleInfo{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 7px;
+  opacity: 1;
+  font-size:13px;
+  margin-left:20px;
+  margin-right:20px;
+  color: #444444;
+  display:inline-block;
+}
+
+.legalInfo{
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.col-container{
+  display: table;
+  width: 50%;
+}
+
+.col{
+   display: table-cell;
+   padding: 16px;
+   font-size:13px;
+   line-height:1.8;
+}
+
+
+
+img.material-icons-outlined{
+  width:21px;
+  height:24px;
+  vertical-align:sub;
+}
+
+.info-link{
+  text-decoration: none;
+}
+
+/*--------------------------------------------
+    Specific elements for TOC
+--------------------------------------------*/
+
+.openAPIVersion{
+  font-size:14px;
+  letter-spacing: 0px;
+  opacity: 1;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.tocHR{
+  border: 1px solid rgba(241, 241, 241, 1);
+  opacity: 1;
+  margin-bottom:30px;
+}
+
+.sticky-toc[id = "oneFileSToc"]{
+  position:sticky;
+  top:0;
+  padding-bottom: 20px;
+}
+
+.sticky-toc[title = "componentsSToc"]{
+  top:0;
+  padding-bottom: 20px;
+}
+
+.tocElement[title = "oneFile"]{
+  font-size:15px;
+  letter-spacing: 0px;
+  color: rgba(112, 112, 112, 1);
+  opacity: 1;
+  margin-left:3px;
+  display:block;
+  padding:10px;
+}
+
+.tocElement[title ="components"]{
+  font-size:15px;
+  letter-spacing: 0px;
+  color: rgba(112, 112, 112, 1);
+  opacity: 1;
+  margin-left:3px;
+  display:block;
+  padding:10px;
+}
+
+.tocTitle{
+  letter-spacing: 0px;
+  color: rgba(112, 112, 112, 1);
+  opacity: 1;
+  font-size:15px;
+  font-weight:600;
+  padding-left:10px;
+}
+
+.tocElement img.material-icons-outlined{
+  width:19px;
+  height:19px;
+  vertical-align:sub;
+  padding-right: 10px;
+  /* icon color */
+  filter: invert(69%) sepia(0%) saturate(262%) hue-rotate(53deg) brightness(81%) contrast(84%);
+}
+
+ a.tocElement:hover > img.material-icons-outlined{
+  /* icon color */
+  filter: invert(55%) sepia(8%) saturate(2870%) hue-rotate(169deg) brightness(83%) contrast(80%);
+}
+
+ a.tocElement:link,visited{
+  text-decoration: none;
+}
+
+ a.tocElement:hover,active{
+  background: rgba(233, 244, 255, 1) 0% 0% no-repeat padding-box;
+  text-decoration: none;
+  letter-spacing: 0px;
+  color: rgba(83, 126, 170, 1);
+  opacity: 1;
+}
+
+/*--------------------------------------------
+    Design Servers elements
+--------------------------------------------*/
+
+select{
+  background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 5px;
+  opacity: 1;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:13px;
+  font-family:inherit;
+  width: 370px;
+  height: 38px;
+}
+
+.subtitleServers{
+  font-size:inherit;
+  font-style:inherit;
+  margin-left:20px;
+}
+
+.variblesSelect{
+  margin-top:10px;
+  margin-left:20px;
+}
+
+.ComputedUrl{
+  background: #FFFBE9 0% 0% no-repeat padding-box;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  opacity: 1;
+  margin-top:10px;
+  margin-left:20px;
+  width: fit-content;
+  min-width: 370px;
+  height: 38px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0px;
+  color: #4A4A4A;
+  opacity: 1;
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+
+/*--------------------------------------------
+    Design Paths elements
+--------------------------------------------*/
+.tags{
+  font-size: 14px;
+  margin-bottom: 10px;
+  display:inline;
+}
+
+.tagDescription{
+  margin-bottom: 12px;
+  padding-left: 20px;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-size: 13px;
+  line-height: 1.8;
+  width: 75%;
+  overflow-wrap: break-word;
+}
+
+.tagPath{
+  margin:8px;
+}
+
+button{
+  background: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+img.expand-collapse{
+  width: 21px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+img.expand-collapse:hover{
+  background-color:#ECECEC;
+}
+
+.pathComponent{
+  padding-left: 25px;
+}
+
+.tagsDescription{
+  font-size: 13px;
+  display: inline;
+  font-style: italic;
+}
+
+.path{
+  margin-top: 15px;
+}
+
+.operationName{
+  text-transform: uppercase;
+  display: inline;
+  font-size: 13px;
+  padding: 0.5em 1em;
+  line-height: 2em;
+  color: #fff;
+}
+
+.pathStyle{
+  width: fit-content;
+  margin-top:13px;
+}
+
+.pathName{
+  display: inline;
+  padding-left: 10px;
+  padding-top:  10px;
+  filter: contrast(80);
+  text-align: left;
+  font: normal normal normal 16px/16px Roboto;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.pathOp{
+	display:inline-block;
+}
+
+.pathOp[title = "get"]{
+  background-color: #1391FF;
+}
+
+.pathOp[title = "put"]{
+  background-color: #E97500;
+}
+.pathOp[title = "post"]{
+  background-color: #3CB371;
+}
+.pathOp[title = "delete"]{
+  background-color: #CF3030;
+}
+.pathOp[title = "options"]{
+  background-color: #005DAE;
+}
+.pathOp[title = "head"]{
+  background-color: #7300E5;
+}
+.pathOp[title = "patch"]{
+  background-color: #00A0A7;
+}
+.pathOp[title = "trace"]{
+  background-color: #0B1D33;
+}
+
+.OperationDescription{
+  padding-left: 30px;
+  margin-bottom: 20px;
+  width: 75%;
+  overflow-wrap: break-word;
+  line-height: 1.8;
+}
+
+.OperationElementsTitle{
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  font: normal normal normal 16px/16px Roboto;
+  letter-spacing: 0px;
+  color: #4A4A4A;
+  opacity: 1;
+  display:inline;
+}
+
+.parameterItemList{
+  text-align: left;
+  font: normal normal normal 14px/16px Roboto;
+  letter-spacing: 0px;
+  opacity: 1;
+  padding-bottom:5px;
+}
+
+.ParameterName{
+  display: inline;
+  padding-right: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #707070;
+}
+
+.requiredParam{
+  display: inline;
+  border: 1px solid #F59178;
+  border-radius: 4px;
+  opacity: 1;
+  font-size: 11px;
+  color: #F59178;
+  margin-right:10px;
+  line-height: 2em;
+  padding:2px;
+}
+
+.optionalParam{
+  display:inline;
+  border: 1px solid #7B9094;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 2em;
+  padding:3px;
+  opacity: 1;
+  margin-right:10px;
+  color:#7B9094;
+}
+
+.paramElement{
+  font-size: 12px;
+  margin-top: 10px;
+  width: 75%;
+  overflow-wrap: break-word;
+  line-height: 1.8;
+}
+
+.firstColumnJsonSchema{
+  background: #f0f8ff;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.firstColumn{
+  background: #f0f8ff;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.parameterList{
+  padding-left: 15px;
+  overflow:hidden;
+  display:none;
+  padding-bottom:1em;
+}
+
+.parameterList[title = 'location']{
+  display:block;
+}
+
+.floatLeft{
+  display: inline;
+}
+
+
+.floatRight{
+  display: inline;
+}
+
+.OperationItems{
+    margin-left:42px;
+    margin-bottom:10px;
+}
+
+.OperationItems[title="get"]{
+  border-left:medium solid #1391FF;
+}
+.OperationItems[title="put"]{
+  border-left:medium solid #E97500;
+}
+.OperationItems[title="post"]{
+  border-left:medium solid #3CB371;
+}
+.OperationItems[title="delete"]{
+  border-left:medium solid #CF3030;
+}
+.OperationItems[title="options"]{
+  border-left:medium solid #005DAE;
+}
+.OperationItems[title="head"]{
+  border-left:medium solid #7300E5;
+}
+.OperationItems[title="patch"]{
+  border-left:medium solid #00A0A7;
+}
+.OperationItems[title="trace"]{
+  border-left:medium solid #0B1D33;
+}
+
+.contentResponseItem{
+    padding-left:35px;
+    font-size:13px;
+}
+
+.name{
+    font-weight:bold;
+    padding-top:10px;
+}
+
+.OperationResponseTitle{
+    text-align: center;
+    display: inline;
+    font-size: 13px;
+    padding: 0.5em 1em;
+    line-height: 3em;
+}
+
+
+.OperationResponseTitle[data-responseCode = "2"]{
+  background-color: #90EE90;
+}
+.OperationResponseTitle[data-responseCode = "3"]{
+  background-color: #C8A2C8;
+}
+.OperationResponseTitle[data-responseCode = "4"]{
+  background-color: #FFCCCB;
+}
+.OperationResponseTitle[data-responseCode = "5"]{
+  background-color: #FFFFE0;
+}
+.OperationResponseTitle[data-responseCode = "d"]{
+  background-color: #D3D3D3;
+}
+
+
+.responseItem{
+    margin-bottom:10px;
+}
+
+.requestBody{
+    padding-left:35px;
+}
+
+.responseDesc{
+	text-align: left;
+  letter-spacing: 0px;
+  color: #707070;
+  line-height:2em;
+}
+
+
+.componentElement{
+  padding-left: 30px;
+  text-align: left;
+  font: normal normal normal 13px/13px Roboto;
+  letter-spacing: 0px;
+  color: #707070;
+  padding-bottom:15px;
+  padding-top:10px;
+}
+
+.componentElementName{
+	padding-left: 10px;
+  text-align: left;
+  font: normal normal normal 16px/16px Roboto;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.componentsElementResponses{
+  padding-left: 10px;
+  text-align: left;
+  font: normal normal normal 16px/16px Roboto;
+  letter-spacing: 0px;
+  color: #707070;
+  margin-top:15px;  
+  display: inline
+}
+
+.securityList{
+  margin-bottom: 15px;
+}
+
+.securityElement{
+  padding-left:30px;
+  padding-top: 15px;
+}
+
+.flowElements{
+  padding:10px;
+}
+
+.summary{
+  line-height: 3em;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+
+.examplesValue{
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+.operationItem{
+  padding-top: 10px;
+}
+
+.securityBlock{
+   padding-left: 15px;
+   padding-bottom: 1em;
+}
+
+.referenceLink{
+  text-decoration:none;
+  color:inherit;
+}
+/* Wrap the long lines in the 'pre' section. */
+pre {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
