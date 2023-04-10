@@ -28,6 +28,10 @@ task initScript() {
             scriptToRun = "wsdlDocumentation.sh"
             break
         case ".json":
+            if (isOpenAPI){
+                scriptToRun = "openApiDocGen.sh"
+                break
+            }
         case ".jschema":
             scriptToRun = "jsonSchemaDocGen.sh"
             break
@@ -50,21 +54,21 @@ task initScript() {
 task downloadAddon(dependsOn: [initScript]) {
     doFirst {
         if (new File("${projectDir}/extracted/oxygen/").exists()) {
-            println "The download started for " + scriptToRun
+            String oxygenPluginsDir = "${projectDir}/extracted/oxygen/plugins/" as String
             if ("openApiDocGen.sh".equals(scriptToRun)) {
-                ant.get(src: 'https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-openapi-doc-generator-addon/2.1.0/oxygen-openapi-doc-generator-addon-2.1.0-plugin.jar',
-                        dest: "${projectDir}/extracted/oxygen/plugins", skipexisting: 'true')
+                String openApiAddonUrl = "https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-openapi-doc-generator-addon/2.1.0/oxygen-openapi-doc-generator-addon-2.1.0-plugin.jar"
+                String openApiAddonDir = "oxygen-openapi-doc-generator-addon-2.1.0";
+                ant.get(src: openApiAddonUrl, dest: oxygenPluginsDir, skipexisting: 'true')
                 ant.unjar(src: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0-plugin.jar",
-                        dest: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0")
-                ant.move(file: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0/oxygen-openapi-doc-generator-addon-2.1.0",
-                         todir: "${projectDir}/extracted/oxygen/plugins")
+                        dest: oxygenPluginsDir + openApiAddonDir)
+                ant.move(file: oxygenPluginsDir + openApiAddonDir + '/' + openApiAddonDir, todir: oxygenPluginsDir)
             } else if ("jsonSchemaDocGen.sh".equals(scriptToRun)) {
-                ant.get(src: 'https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-json-schema-doc-generator-addon/4.1.0/oxygen-json-schema-doc-generator-addon-4.1.0-plugin.jar',
-                        dest: "${projectDir}/extracted/oxygen/plugins", skipexisting: 'true')
+                String jsonSchemaAddonUrl = "https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-json-schema-doc-generator-addon/4.1.0/oxygen-json-schema-doc-generator-addon-4.1.0-plugin.jar"
+                String jsonSchemaAddonDirName = "oxygen-json-schema-doc-generator-addon-4.1.0";
+                ant.get(src: jsonSchemaAddonUrl, dest: oxygenPluginsDir, skipexisting: 'true')
                 ant.unjar(src: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0-plugin.jar",
-                        dest: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0")
-                ant.move(file: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0/oxygen-json-schema-doc-generator-addon-4.1.0",
-                        todir: "${projectDir}/extracted/oxygen/plugins")
+                        dest: oxygenPluginsDir + jsonSchemaAddonDirName)
+                ant.move(file: oxygenPluginsDir + jsonSchemaAddonDirName + '/' + jsonSchemaAddonDirName, todir: oxygenPluginsDir)
             }
         }
     }
@@ -79,6 +83,7 @@ task generateDoc(type: Exec, dependsOn: [initScript, downloadAddon]) {
     String outputFile = "${projectDir}/../doc/" + schemaName + ".html"
 
     workingDir "${projectDir}/extracted/oxygen"
+    // Different param for output file for JSON Schema and OpenAPI scripts.
     boolean isOpenApiOrJsonSchema = "jsonSchemaDocGen.sh".equals(scriptToRun) || "openApiDocGen.sh".equals(scriptToRun)
     commandLine "scripts/" + scriptToRun, schemaFilePath, (isOpenApiOrJsonSchema ? "-ofp" : "-out:"), outputFile
     doLast {

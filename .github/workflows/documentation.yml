@@ -10,6 +10,9 @@ on:
       schemaFile:
         description: 'Schema file to generate documentation for.'
         required: true
+      isOpenAPI:
+        description: 'Check this to generate documentation for an OpenAPI file.'
+        default: false
 jobs:
   generate-doc:
     runs-on: ubuntu-latest
@@ -27,7 +30,7 @@ jobs:
           env:
            SCRIPTING_LICENSE_KEY: ${{secrets.SCRIPTING_LICENSE_KEY}}
           run: |
-            cd build; ./gradlew generateDoc -PschemaFile=${{inputs.schemaFile}} -PinnerBuild=true --info --stacktrace --build-cache
+            cd build; ./gradlew generateDoc -PschemaFile=${{inputs.schemaFile}} -PisOpenAPI=${{inputs.isOpenAPI}} -PinnerBuild=true --info --stacktrace --build-cache
        
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@v4.4.1

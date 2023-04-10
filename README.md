@@ -1,6 +1,7 @@
 # Oxygen Script - Documentation Template
 This project provides you with a template that uses <i>Oxygen Scripting</i> to generate HTML documentation for your schema files from a GitHub repository.
-For the moment, it can only work with [XML Schema (XSD)](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html), [XSL](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html) and [WSDL](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html) files.
+It works with [XML Schema (XSD)](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html), [XSL](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html), [WSDL](https://www.oxygenxml.com/xml_editor/xml_schema_documentation.html),
+[JSON Schema](https://www.oxygenxml.com/xml_editor/json_converter.html#generate-json-schema-documentation) and [OpenAPI](https://www.oxygenxml.com/xml_editor/openapi.html#openapi-documentation-generator) files.
 
 To get things ready, follow these steps:
 1. Create a new GitHub project using this template. This allows you to easily create a new repository without copying and pasting the content, and with no history or reference to this repository.
