@@ -79,7 +79,8 @@ task generateDoc(type: Exec, dependsOn: [initScript, downloadAddons]) {
     String outputFile = "${projectDir}/../doc/" + schemaName + ".html"
 
     workingDir "${projectDir}/extracted/oxygen"
-    commandLine "scripts/" + scriptToRun, schemaFilePath, "-out:" + outputFile
+    boolean isOpenApiOrJsonSchema = "jsonSchemaDocGen.sh".equals(scriptToRun) || "openApiDocGen.sh".equals(scriptToRun)
+    commandLine "scripts/" + scriptToRun, schemaFilePath, isOpenApiOrJsonSchema ? "-ofp " : "-out:" + outputFile
     doLast {
         if (execResult.getExitValue() != 0) {
             println new File(outputFile).text
