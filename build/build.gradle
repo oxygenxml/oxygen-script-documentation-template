@@ -47,7 +47,7 @@ task initScript() {
     }
 }
 
-task downloadAddons(dependsOn: [initScript]) {
+task downloadAddon(dependsOn: [initScript]) {
     doFirst {
         if (new File("${projectDir}/extracted/oxygen/").exists()) {
             println "The download started for " + scriptToRun
@@ -70,7 +70,7 @@ task downloadAddons(dependsOn: [initScript]) {
     }
 }
 
-task generateDoc(type: Exec, dependsOn: [initScript, downloadAddons]) {
+task generateDoc(type: Exec, dependsOn: [initScript, downloadAddon]) {
     // Compute the absolute schema file path depending on where the script is started from.
     String schemaFilePath = "${projectDir}" + (innerBuild.toBoolean() ? "/../schemas/" : "/../../") + schemaFile
     String schemaName = schemaFile.lastIndexOf('/') != -1 ?
@@ -80,7 +80,7 @@ task generateDoc(type: Exec, dependsOn: [initScript, downloadAddons]) {
 
     workingDir "${projectDir}/extracted/oxygen"
     boolean isOpenApiOrJsonSchema = "jsonSchemaDocGen.sh".equals(scriptToRun) || "openApiDocGen.sh".equals(scriptToRun)
-    commandLine "scripts/" + scriptToRun, schemaFilePath, (isOpenApiOrJsonSchema ? "-ofp " : "-out:") + outputFile
+    commandLine "scripts/" + scriptToRun, schemaFilePath, (isOpenApiOrJsonSchema ? "-ofp" : "-out:"), outputFile
     doLast {
         if (execResult.getExitValue() != 0) {
             println new File(outputFile).text
