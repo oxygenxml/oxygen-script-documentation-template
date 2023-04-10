@@ -56,11 +56,15 @@ task downloadAddons(dependsOn: [initScript]) {
                         dest: "${projectDir}/extracted/oxygen/plugins", skipexisting: 'true')
                 ant.unjar(src: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0-plugin.jar",
                         dest: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0")
+                ant.move(file: "${projectDir}/extracted/oxygen/plugins/oxygen-openapi-doc-generator-addon-2.1.0/oxygen-openapi-doc-generator-addon-2.1.0",
+                         todir: "${projectDir}/extracted/oxygen/plugins")
             } else if ("jsonSchemaDocGen.sh".equals(scriptToRun)) {
                 ant.get(src: 'https://www.oxygenxml.com/InstData/Addons/default/com/oxygenxml/oxygen-json-schema-doc-generator-addon/4.1.0/oxygen-json-schema-doc-generator-addon-4.1.0-plugin.jar',
                         dest: "${projectDir}/extracted/oxygen/plugins", skipexisting: 'true')
                 ant.unjar(src: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0-plugin.jar",
                         dest: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0")
+                ant.move(file: "${projectDir}/extracted/oxygen/plugins/oxygen-json-schema-doc-generator-addon-4.1.0/oxygen-json-schema-doc-generator-addon-4.1.0",
+                        todir: "${projectDir}/extracted/oxygen/plugins")
             }
         }
     }
