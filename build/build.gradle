@@ -80,15 +80,20 @@ task generateDoc(type: Exec, dependsOn: [initScript, downloadAddon]) {
     String schemaName = schemaFile.lastIndexOf('/') != -1 ?
             schemaFile.takeBetween('/', '.') :
             schemaFile.take(schemaFile.lastIndexOf('.'))
-    String outputFile = "${projectDir}/../doc/" + schemaName + ".html"
+    String outputFilePath = "${projectDir}/../doc/" + schemaName + ".html"
 
     workingDir "${projectDir}/extracted/oxygen"
     // Different param for output file for JSON Schema and OpenAPI scripts.
     boolean isOpenApiOrJsonSchema = "jsonSchemaDocGen.sh".equals(scriptToRun) || "openApiDocGen.sh".equals(scriptToRun)
-    commandLine "scripts/" + scriptToRun, schemaFilePath, (isOpenApiOrJsonSchema ? "-ofp" : "-out:"), outputFile
+    if (isOpenApiOrJsonSchema) {
+        commandLine "scripts/" + scriptToRun, schemaFilePath, "-ofp", outputFilePath
+    } else {
+        commandLine "scripts/" + scriptToRun, schemaFilePath, "-out:" + outputFilePath
+    }
+
     doLast {
         if (execResult.getExitValue() != 0) {
-            println new File(outputFile).text
+            println new File(outputFilePath).text
             throw new TaskExecutionException(it, new Exception("Generation failed, see task output for details."))
         }
     }
